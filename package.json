@@ -83,5 +83,6 @@
     "tslint-plugin-prettier": "^2.3.0",
     "typescript": "~5.0.2"
   },
-  "styleModule": "style/index.js"
+  "styleModule": "style/index.js",
+  "packageManager": "yarn@4.0.2"
 }
