@@ -1,9 +1,11 @@
 import { IRenderMime, RenderedText, renderText } from '@jupyterlab/rendermime';
 import { limitByCharacters, limitByLines } from './formatters';
+/*
 import { showDialog } from '@jupyterlab/apputils';
 
 const WARN_BEFORE_EXPANDING_SOURCE_LENGTH_CH = 100000;
 const WARN_BEFORE_EXPANDING_SOURCE_LENGTH_LINES = 1000;
+*/
 
 export interface ISettings {
   head: number;
@@ -49,8 +51,8 @@ const limitOutputRenderText = async (
     // shown as well as keep the original options unchanged
     const clonedOptions = {
       ...options,
-      head: _head || limitSettings.head,
-      tail: _tail || limitSettings.tail,
+      head: limitSettings.head,
+      tail: limitSettings.tail,
     };
 
     if (limitSettings.method === 'characters') {
@@ -73,6 +75,7 @@ const limitOutputRenderText = async (
     // Wait for text to render so that we can add our buttons after it
     const ret = await renderText(clonedOptions);
     // If we need to, add buttons for expanding output
+    /*
     if (
       _cleanupButtonFn === null &&
       clonedOptions.source.length !== options.source.length
@@ -157,6 +160,7 @@ const limitOutputRenderText = async (
     ) {
       _cleanupButtonFn();
     }
+    */
     return ret;
   }
   return renderText(options);
